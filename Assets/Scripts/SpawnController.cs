@@ -85,8 +85,6 @@ public class SpawnController : MonoBehaviour
         {
             int index = spherePrefabs.FindIndex(current => current.GetComponent<Renderer>().sharedMaterial.color == playerController.currentColor);
             sphere = Instantiate(spherePrefabs[index]);
-            Vector3 pos = sphere.transform.position;
-            sphere.transform.position = new Vector3(Random.Range(-4, 4), pos.y, Random.Range(0, 4) + player.transform.position.z + tileLength * noOfTilesOnScreen - tileLength);
         }
         else
         {
@@ -94,9 +92,9 @@ public class SpawnController : MonoBehaviour
             int index = obstacles.FindIndex(current => current.GetComponent<Renderer>().sharedMaterial.color == playerController.currentColor);
             obstacles.RemoveAt(index);
             sphere = Instantiate(obstacles[Random.Range(0, obstacles.Count)]);
-            Vector3 pos = sphere.transform.position;
-            sphere.transform.position = new Vector3(Random.Range(-4, 4), pos.y, Random.Range(0, 4) + player.transform.position.z + tileLength * noOfTilesOnScreen - tileLength);
         }
+        Vector3 pos = sphere.transform.position;
+        sphere.transform.position = new Vector3(Random.Range(-4, 4), pos.y, Random.Range(0, 4) + player.transform.position.z + tileLength * noOfTilesOnScreen - tileLength);
         instantiatedObjects.Add(sphere);
     }
 
